@@ -1,0 +1,54 @@
+<div class="container-xl">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h4><b>Add Document</b></h4>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="isCreating" class="alert alert-info">
+        Creating document...
+      </div>
+
+      <!-- FORM -->
+      <form [formGroup]="documentForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input id="name" formControlName="name" class="form-control" type="text" />
+        </div>
+        
+        <div class="form-group">
+          <label for="created_by">Created By</label>
+          <input id="created_by" formControlName="created_by" class="form-control" type="text" />
+        </div>
+        
+        <div class="form-group">
+          <label for="external_id">External ID</label>
+          <input id="external_id" formControlName="external_id" class="form-control" type="text" />
+        </div>
+        
+        <div formArrayName="signer_document">
+          <div *ngFor="let signer of signerDocuments.controls; let i = index" [formGroupName]="i">
+            <div class="form-group">
+              <label for="signer_name">Signer Name</label>
+              <input id="signer_name" formControlName="name" class="form-control" type="text" />
+            </div>
+            <div class="form-group">
+              <label for="signer_email">Signer Email</label>
+              <input id="signer_email" formControlName="email" class="form-control" type="email" />
+            </div>
+            <button type="button" class="btn btn-danger" (click)="removeSigner(i)">Remove</button>
+          </div>
+          <button type="button" class="btn btn-primary" (click)="addSigner()">Add Signer</button>
+        </div>
+        
+        <button type="submit" class="btn btn-success" [disabled]="documentForm.invalid || isCreating">
+          {{ isCreating ? 'Creating...' : 'Submit' }}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
