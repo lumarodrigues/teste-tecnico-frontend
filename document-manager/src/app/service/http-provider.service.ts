@@ -1,46 +1,46 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { WebApiService } from './web-api.service';
-
-const apiUrl = "http://127.0.0.1:8001/";
-
-const httpLink = {
-  getAllDocument: apiUrl + "api/v1/documents/",
-  deleteDocumentById: apiUrl + "api/v1/documents/",
-  getDocumentDetailById: apiUrl + "api/v1/documents/",
-  saveDocument: apiUrl + "api/v1/documents/",
-};
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpProviderService {
 
-  constructor(private webApiService: WebApiService) { }
+  private apiUrl: string = environment.apiUrl;
+  private httpLink: { 
+    getAllDocument: string, 
+    deleteDocumentById: string, 
+    getDocumentById: string,
+    saveDocument: string 
+  };
 
-  public getAllDocument(): Observable<any> {
-    return this.webApiService.get(httpLink.getAllDocument);
+  constructor(private webApiService: WebApiService) {
+    this.httpLink = {
+      getAllDocument: `${this.apiUrl}api/v1/documents/`,
+      deleteDocumentById: `${this.apiUrl}api/v1/documents/`,
+      getDocumentById: `${this.apiUrl}api/v1/documents/`,
+      saveDocument: `${this.apiUrl}api/v1/documents/`
+    };
   }
 
-  public deleteDocumentById(documentId: string): Observable<any> {
-    return this.webApiService.delete(httpLink.deleteDocumentById + documentId + '/');
+  getAllDocument() {
+    return this.webApiService.get(this.httpLink['getAllDocument']);
   }
 
-  public getDocumentDetailById(documentId: string): Observable<any> {
-    return this.webApiService.get(httpLink.getDocumentDetailById + documentId + '/');
+  deleteDocumentById(documentId: number) {
+    return this.webApiService.delete(`${this.httpLink['deleteDocumentById']}${documentId}/`);
   }
 
-  public saveDocument(document: any): Observable<any> {
-    console.log('Sending document:', document);
-    return this.webApiService.post(httpLink.saveDocument, document);
+  getDocumentById(documentId: number) {
+    return this.webApiService.get(`${this.httpLink['getDocumentById']}${documentId}/`);
   }
 
-  public getDocumentById(documentId: number): Observable<any> {
-    return this.webApiService.get(httpLink.getDocumentDetailById + documentId + '/');
+  saveDocument(document: any) {
+    return this.webApiService.post(this.httpLink['saveDocument'], document);
   }
 
-  public updateDocument(id: number, document: any): Observable<any> {
-    return this.webApiService.put(httpLink.getDocumentDetailById + id + '/', document);
+  updateDocument(id: number, document: any) {
+    return this.webApiService.put(`${this.httpLink['getDocumentById']}${id}/`, document);
   }
 }
-
