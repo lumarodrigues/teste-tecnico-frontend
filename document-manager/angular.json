@@ -60,7 +60,7 @@
                 }
               ],
               "outputHashing": "all",
-              "baseHref": "/static/"  // Adicionando o baseHref aqui para produção também
+              "baseHref": "/static/"
             },
             "development": {
               "buildOptimizer": false,
@@ -69,7 +69,7 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true,
-              "baseHref": "/"  // Mantendo baseHref como padrão para desenvolvimento
+              "baseHref": "/"
             }
           },
           "defaultConfiguration": "production"
