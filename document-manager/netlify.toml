@@ -1,11 +1,4 @@
 [build]
-  publish = "dist/document-manager"
-
-[build.environment]
-  NODE_VERSION = "16"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = true
+  base = "/"
+  command = "npm install -g @angular/cli && npm install --legacy-peer-deps && npm run build --prod"
+  publish = "dist"
