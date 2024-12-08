@@ -1,6 +1,6 @@
 [build]
-  publish = "dist/document-manager"
   command = "cd document-manager && npm install --legacy-peer-deps && npm run build --prod"
+  publish = "dist/document-manager"
 
 [build.environment]
   NODE_VERSION = "16"
@@ -10,4 +10,3 @@
   to = "/index.html"
   status = 200
   force = true
-
