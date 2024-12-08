@@ -37,7 +37,7 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "baseHref": "/static/"  // Adicionando o baseHref aqui
+            "baseHref": "/static/"
           },
           "configurations": {
             "production": {
