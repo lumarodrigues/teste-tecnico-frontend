@@ -37,7 +37,7 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "baseHref": "/static/"
+            "baseHref": "/"
           },
           "configurations": {
             "production": {
@@ -60,7 +60,7 @@
                 }
               ],
               "outputHashing": "all",
-              "baseHref": "/static/"
+              "baseHref": "/"
             },
             "development": {
               "buildOptimizer": false,
