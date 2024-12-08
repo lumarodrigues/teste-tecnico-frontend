@@ -36,7 +36,8 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "baseHref": "/static/"  // Adicionando o baseHref aqui
           },
           "configurations": {
             "production": {
@@ -58,7 +59,8 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "baseHref": "/static/"  // Adicionando o baseHref aqui para produção também
             },
             "development": {
               "buildOptimizer": false,
@@ -66,7 +68,8 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "baseHref": "/"  // Mantendo baseHref como padrão para desenvolvimento
             }
           },
           "defaultConfiguration": "production"
@@ -81,7 +84,7 @@
               "browserTarget": "DocumentManager:build:development"
             }
           },
-          "defaultConfiguration": "development",
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -103,7 +106,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/ngx-toastr/toastr.css" 
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           }
