@@ -14,12 +14,24 @@ import { DomSanitizer } from '@angular/platform-browser';
     <div class="modal-body">
       <p><strong>Name:</strong> {{ document.name }}</p>
       <p><strong>Created By:</strong> {{ document.created_by }}</p>
-      <p><strong>External ID:</strong> {{ document.external_id }}</p>
 
-      <!-- Exibe o PDF diretamente no modal -->
-      <div *ngIf="document.pdfUrl">
-        <embed [src]="getSanitizedUrl(document.pdfUrl)" type="application/pdf" width="100%" height="600px" />
+      <p><strong>PDF URL:</strong>
+        <a [href]="document.pdf_url" target="_blank" [title]="document.pdf_url">
+          View document in new tab
+        </a>
+      </p>
+
+      <div *ngIf="document.signer_document && document.signer_document.length > 0; else noSigners">
+        <p><strong>Signers:</strong></p>
+        <ul>
+          <li *ngFor="let signer of document.signer_document">
+            {{ signer.name }} ({{ signer.email }})
+          </li>
+        </ul>
       </div>
+      <ng-template #noSigners>
+        <p>No signers available.</p>
+      </ng-template>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" (click)="modal.dismiss('cancel click')">Close</button>
@@ -31,8 +43,13 @@ import { DomSanitizer } from '@angular/platform-browser';
         padding: 20px;
       }
 
-      embed {
-        border: none;
+      a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
       }
     `,
   ],

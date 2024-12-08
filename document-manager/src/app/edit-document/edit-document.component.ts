@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { HttpProviderService } from 'src/app/service/http-provider.service';
@@ -16,46 +16,53 @@ interface Signer {
 export class EditDocumentComponent implements OnInit {
   documentForm: FormGroup;
   documentId: number | null = null;
+  isCreating: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private httpProvider: HttpProviderService
+    private httpProvider: HttpProviderService,
+    private cdr: ChangeDetectorRef
   ) {
     this.documentForm = this.fb.group({
       name: ['', Validators.required],
       created_by: ['', Validators.required],
-      external_id: ['', Validators.required],
+      pdf_url: ['', Validators.required],
       signer_document: this.fb.array([]),
     });
   }
 
   ngOnInit(): void {
     this.documentId = +this.route.snapshot.paramMap.get('id')!;
+    console.log('Document ID:', this.documentId);
     this.loadDocumentData();
   }
 
   loadDocumentData() {
     if (this.documentId) {
+      this.isCreating = true;
       this.httpProvider.getDocumentById(this.documentId).subscribe(
         (document) => {
           this.documentForm.patchValue({
             name: document.name,
             created_by: document.created_by,
-            external_id: document.external_id,
+            pdf_url: document.pdf_url,
           });
 
           const signerArray = this.documentForm.get('signer_document') as FormArray;
+          signerArray.clear();
           document.signer_document.forEach((signer: Signer) => {
             signerArray.push(this.fb.group({
               name: [signer.name, Validators.required],
               email: [signer.email, [Validators.required, Validators.email]],
             }));
           });
+          this.isCreating = false;
         },
         (error) => {
           console.error('Error loading document:', error);
+          this.isCreating = false;
         }
       );
     }
@@ -63,13 +70,16 @@ export class EditDocumentComponent implements OnInit {
 
   onSubmit(): void {
     if (this.documentForm.valid && this.documentId) {
+      this.isCreating = true;
       this.httpProvider.updateDocument(this.documentId, this.documentForm.value).subscribe(
         () => {
-          console.log('Document successfuly updated!');
-          this.router.navigate(['/Home']);
+          console.log('Document successfully updated!');
+          this.router.navigate(['']);
+          this.isCreating = false;
         },
         (error) => {
           console.error('Error updating document:', error);
+          this.isCreating = false;
         }
       );
     }

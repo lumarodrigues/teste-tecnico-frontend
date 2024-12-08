@@ -1,3 +1,6 @@
+<div *ngIf="isCreating" class="alert alert-info">
+  Creating...
+</div>
 <div class="container-xl">
   <div class="table-responsive">
     <div class="table-wrapper">
@@ -10,46 +13,47 @@
       </div>
       <form [formGroup]="documentForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="name">Name</label>
-          <input id="name" formControlName="name" class="form-control" />
+          <label for="name">Document Name</label>
+          <input id="name" formControlName="name" class="form-control" placeholder="Document Name" />
         </div>
 
         <div class="form-group">
           <label for="created_by">Created By</label>
-          <input id="created_by" formControlName="created_by" class="form-control" />
+          <input id="created_by" formControlName="created_by" class="form-control" placeholder="Created By" />
         </div>
 
         <div class="form-group">
-          <label for="external_id">External ID</label>
-          <input id="external_id" formControlName="external_id" class="form-control" />
+          <label for="pdf_url">PDF URL</label>
+          <input id="pdf_url" formControlName="pdf_url" class="form-control" placeholder="PDF URL" />
         </div>
 
         <div formArrayName="signer_document">
-          <div *ngFor="let signer of signerDocuments; let i = index" [formGroupName]="i" class="form-group">
-            <div class="row d-flex align-items-center">
-              <div class="col-5">
-                <label for="signer_name_{{i}}">Signer's Name</label>
-                <input formControlName="name" id="signer_name_{{i}}" class="form-control" />
+          <div *ngFor="let signer of signerDocuments; let i = index" [formGroupName]="i" class="signer-document">
+            <div class="signer-row">
+              <div class="form-group signer-name">
+                <label for="signer_name">Signer Name</label>
+                <input id="signer_name" formControlName="name" class="form-control" placeholder="Signer Name" />
               </div>
-              <div class="col-5">
-                <label for="signer_email_{{i}}">Signer's E-mail</label>
-                <input formControlName="email" id="signer_email_{{i}}" class="form-control" />
+
+              <div class="form-group signer-email">
+                <label for="signer_email">Signer Email</label>
+                <input id="signer_email" formControlName="email" class="form-control" placeholder="Signer Email" />
               </div>
-              <div class="col-2">
-                <button type="button" class="btn btn-danger" (click)="removeSigner(i)">Remove</button>
-              </div>
+
+              <button type="button" class="btn btn-danger remove-btn" (click)="removeSigner(i)">
+                <i class="fas fa-times"></i>
+              </button>
             </div>
           </div>
         </div>
 
-        <div class="form-group">
-          <button type="button" class="btn btn-secondary" (click)="addSigner()"><i class="fas fa-plus-circle"></i><span> Add New Signer</span></button>
-          
+        <div class="d-grid gap-2 col-2 mx-left">
+          <button type="button" class="general-button btn btn-primary" (click)="addSigner()"><i class="fas fa-plus-circle"></i><span> Signer</span></button>
+          <button type="submit" class="general-button btn btn-success" [disabled]="documentForm.invalid || isCreating">
+            {{ isCreating ? 'Creating...' : 'Submit' }}
+          </button>
         </div>
 
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary" [disabled]="!documentForm.valid">Update Document</button>
-        </div>
       </form>
     </div>
   </div>

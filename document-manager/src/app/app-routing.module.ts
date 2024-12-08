@@ -7,9 +7,9 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'view/:documentId', component: ViewDocumentComponent },
+  { path: 'view/:id', component: ViewDocumentComponent },
   { path: 'add', component: AddDocumentComponent },
-  { path: 'edit/:documentId', component: EditDocumentComponent },
+  { path: 'edit/:id', component: EditDocumentComponent },
 ];
 
 @NgModule({

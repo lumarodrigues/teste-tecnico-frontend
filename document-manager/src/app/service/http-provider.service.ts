@@ -31,7 +31,7 @@ export class HttpProviderService {
   }
 
   public saveDocument(document: any): Observable<any> {
-    console.log('Enviando documento:', document);
+    console.log('Sending document:', document);
     return this.webApiService.post(httpLink.saveDocument, document);
   }
 

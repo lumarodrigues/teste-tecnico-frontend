@@ -19,7 +19,7 @@ export class AddDocumentComponent implements OnInit {
     this.documentForm = this.fb.group({
       name: ['', Validators.required],
       created_by: ['', Validators.required],
-      external_id: ['', Validators.required],
+      pdf_url: ['', Validators.required],
       signer_document: this.fb.array([])
     });
   }

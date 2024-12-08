@@ -6,7 +6,7 @@ export interface SignerDocument {
   export interface Document {
     name: string;
     created_by: string;
-    external_id: string;
+    pdf_url: string;
     signer_document: SignerDocument[];
   }
   

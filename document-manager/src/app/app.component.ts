@@ -11,6 +11,6 @@ export class AppComponent {
   constructor(private router: Router) { }
 
   HomeClick(){
-    this.router.navigate(['Home']);
+    this.router.navigate(['']);
   }
 }

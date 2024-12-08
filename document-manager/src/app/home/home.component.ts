@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
   }
 
   AddDocument() {
-    this.router.navigate(['AddDocument']);
+    this.router.navigate(['add']);
   }
 
   deleteDocumentConfirmation(document: any) {
@@ -105,7 +105,7 @@ export class HomeComponent implements OnInit {
 
   editDocument(document: any) {
     console.log('Update document:', document);
-    this.router.navigate(['edit-document', document.id]);
+    this.router.navigate(['edit', document.id]);
   }
   
   

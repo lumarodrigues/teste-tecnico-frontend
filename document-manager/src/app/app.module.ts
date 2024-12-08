@@ -13,8 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { DocumentDetailsModal } from './document-details-modal/document-details-modal.component';
 import { RouterModule } from '@angular/router';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
-
+import { HttpProviderService } from './service/http-provider.service';
 
 
 @NgModule({
@@ -36,9 +35,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     RouterModule,
-    PdfViewerModule
   ],
-  providers: [],
+  providers: [HttpProviderService],
   bootstrap: [AppComponent],
   entryComponents: [DocumentDetailsModal],
 })
