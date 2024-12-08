@@ -1,65 +1,60 @@
 
 # Zapsign Frontend
 
-Projeto do Frontend complementar ao projeto Backend: [zapsign-backend](https://github.com/lumarodrigues/zapsign-backend).
+Este é o repositório do frontend da aplicação Zapsign, desenvolvido com Angular. Ele é complementar ao backend da aplicação, disponível em: [zapsign-backend](https://github.com/lumarodrigues/zapsign-backend).
 
 ---
 
-## Como começar
+## 🚀 Como começar
 
-1. Clone o repositório:
-   ```bash
-   git clone git@github.com:lumarodrigues/zapsign-backend.git
-   ```
+Para começar a trabalhar com o projeto, siga os passos abaixo.
 
----
+### 1. Clonar o repositório
 
-## Como rodar o projeto com Docker
+Clone o repositório para a sua máquina local:
 
-> **Nota:** É necessário que o Backend esteja rodando em conjunto.
+```bash
+git clone git@github.com:lumarodrigues/zapsign-backend.git
+```
 
-1. Construa a imagem Docker:
-   ```bash
-   sudo docker build -t angular-app .
-   ```
+### 2. Rodar o Backend
 
-2. Suba o container:
-   ```bash
-   sudo docker-compose up --build
-   ```
+> **Importante:** O Backend deve estar rodando para que o Frontend funcione corretamente. Certifique-se de que o [Zapsign Backend](https://github.com/lumarodrigues/zapsign-backend) esteja configurado e em execução.
 
 ---
 
-## Acesso ao projeto
+## 🐳 Como rodar o projeto com Docker
 
-O projeto ficará disponível em: [http://localhost:4200/](http://localhost:4200/)
+O Docker facilita a configuração e execução do ambiente do frontend e backend.
 
+### 1. Construir a imagem Docker
 
+Construa a imagem Docker para o projeto com o seguinte comando:
 
-# DocumentManager
+```bash
+sudo docker build -t angular-app .
+```
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
+### 2. Subir o container
 
-## Development server
+Para subir o container, execute:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```bash
+sudo docker-compose up --build
+```
 
-## Code scaffolding
+Isso irá inicializar o frontend e conectar com o backend.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## 🌐 Acesso ao Projeto
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Uma vez que o container esteja em execução, o projeto estará disponível no seguinte endereço:
 
-## Running unit tests
+[http://localhost:4200/](http://localhost:4200/)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+## 📝 Licença
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Este projeto está licenciado sob a GNU GENERAL PUBLIC LICENSE. Consulte o arquivo LICENSE para mais detalhes.
