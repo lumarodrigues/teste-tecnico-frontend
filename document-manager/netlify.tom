@@ -1,6 +1,6 @@
 [build]
   publish = "dist/document-manager"
-  command = "ng build --prod"
+  command = "cd document-manager && npm install --legacy-peer-deps && npm run build --prod"
 
 [build.environment]
   NODE_VERSION = "16"
