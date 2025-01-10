@@ -1,7 +1,7 @@
 
-# Zapsign Frontend
+# Teste Técnico Frontend
 
-Este é o repositório do frontend da aplicação Zapsign, desenvolvido com Angular. Ele é complementar ao backend da aplicação, disponível em: [zapsign-backend](https://github.com/lumarodrigues/zapsign-backend).
+Este é o repositório do frontend da aplicação Teste Técnico, desenvolvido com Angular. Ele é complementar ao backend da aplicação, disponível em: [teste-tecnico-backend](https://github.com/lumarodrigues/teste-tecnico-backend).
 
 ---
 
@@ -14,12 +14,12 @@ Para começar a trabalhar com o projeto, siga os passos abaixo.
 Clone o repositório para a sua máquina local:
 
 ```bash
-git clone git@github.com:lumarodrigues/zapsign-backend.git
+git clone git@github.com:lumarodrigues/teste-tecnico-backend.git
 ```
 
 ### 2. Rodar o Backend
 
-> **Importante:** O Backend deve estar rodando para que o Frontend funcione corretamente. Certifique-se de que o [Zapsign Backend](https://github.com/lumarodrigues/zapsign-backend) esteja configurado e em execução.
+> **Importante:** O Backend deve estar rodando para que o Frontend funcione corretamente. Certifique-se de que o [Teste Técnico Backend](https://github.com/lumarodrigues/teste-tecnico-backend) esteja configurado e em execução.
 
 ---
 
